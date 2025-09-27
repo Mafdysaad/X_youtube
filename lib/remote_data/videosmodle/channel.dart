@@ -8,7 +8,6 @@ class Channel extends Equatable {
   final String? name;
   final bool? isVerified;
   final bool? isVerifiedArtist;
-  final String? subscribercounttext;
   final List<Avatar>? avatar;
 
   const Channel({
@@ -17,7 +16,6 @@ class Channel extends Equatable {
     this.name,
     this.isVerified,
     this.isVerifiedArtist,
-    this.subscribercounttext,
     this.avatar,
   });
 
@@ -27,7 +25,6 @@ class Channel extends Equatable {
     name: json['name'] as String?,
     isVerified: json['isVerified'] as bool?,
     isVerifiedArtist: json['isVerifiedArtist'] as bool?,
-    subscribercounttext: json['subscriberCountText'] as String?,
     avatar: (json['avatar'] as List<dynamic>?)
         ?.map((e) => Avatar.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -39,7 +36,6 @@ class Channel extends Equatable {
     'name': name,
     'isVerified': isVerified,
     'isVerifiedArtist': isVerifiedArtist,
-    'subscriberCountText': subscribercounttext,
     'avatar': avatar?.map((e) => e.toJson()).toList(),
   };
 

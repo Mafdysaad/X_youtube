@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-class Thumbnail extends Equatable {
+class Avatar extends Equatable {
   final String? url;
   final int? width;
   final int? height;
 
-  const Thumbnail({this.url, this.width, this.height});
+  const Avatar({this.url, this.width, this.height});
 
-  factory Thumbnail.fromJson(Map<String, dynamic> json) => Thumbnail(
+  factory Avatar.fromJson(Map<String, dynamic> json) => Avatar(
     url: json['url'] as String?,
     width: json['width'] as int?,
     height: json['height'] as int?,

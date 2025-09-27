@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:x_youtube/function/featchdata.dart';
 
 import 'package:x_youtube/remote_data/modle/modle.dart';
+import 'package:x_youtube/remote_data/videomodle/videomodle.dart';
+import 'package:x_youtube/remote_data/videosmodle/videosmodle.dart';
 import 'package:x_youtube/screen/videodetails.dart';
 
 import 'package:x_youtube/screen/widgets/customappbar.dart';
@@ -34,19 +36,19 @@ class _HompageState extends State<Hompage> {
     super.initState();
   }
 
-  static List<Modle> list = [];
+  static List<Videosmodle> list = [];
   Future<void> fetchData(String text) async {
     String path =
         '/v2/search/videos?keyword=$text&uploadDate=all&duration=all&sortBy=relevance';
     final url = Uri.parse('${Helper.basul}$path');
-    final response = await http.get(url, headers: Helper.header);
+    final response = await http.get(url, headers: Helper.headers);
 
     print('Response: ${response.body}');
     final data = jsonDecode(response.body);
     list.clear();
     setState(() {
       for (var item in data['items']) {
-        list.add(Modle.fromJson(item));
+        list.add(Videosmodle.fromJson(item));
       }
     });
     if (list.isNotEmpty) {

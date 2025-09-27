@@ -1,11 +1,9 @@
 import 'package:equatable/equatable.dart';
-import 'package:x_youtube/remote_data/modle/related.dart';
-import 'package:x_youtube/remote_data/modle/videos.dart';
 
 import 'channel.dart';
 import 'thumbnail.dart';
 
-class Modle extends Equatable {
+class Videosmodle extends Equatable {
   final String? type;
   final String? id;
   final String? title;
@@ -13,13 +11,11 @@ class Modle extends Equatable {
   final Channel? channel;
   final bool? isLiveNow;
   final String? lengthText;
-  final int? viewCount;
+  final String? viewCountText;
   final String? publishedTimeText;
-  final Videos? videos;
   final List<Thumbnail>? thumbnails;
-  final Related? related;
 
-  const Modle({
+  const Videosmodle({
     this.type,
     this.id,
     this.title,
@@ -27,14 +23,12 @@ class Modle extends Equatable {
     this.channel,
     this.isLiveNow,
     this.lengthText,
-    this.viewCount,
+    this.viewCountText,
     this.publishedTimeText,
-    this.videos,
     this.thumbnails,
-    this.related,
   });
 
-  factory Modle.fromJson(Map<String, dynamic> json) => Modle(
+  factory Videosmodle.fromJson(Map<String, dynamic> json) => Videosmodle(
     type: json['type'] as String?,
     id: json['id'] as String?,
     title: json['title'] as String?,
@@ -44,17 +38,11 @@ class Modle extends Equatable {
         : Channel.fromJson(json['channel'] as Map<String, dynamic>),
     isLiveNow: json['isLiveNow'] as bool?,
     lengthText: json['lengthText'] as String?,
-    viewCount: json['viewCount'] as int?,
+    viewCountText: json['viewCountText'] as String?,
     publishedTimeText: json['publishedTimeText'] as String?,
-    videos: json['videos'] == null
-        ? null
-        : Videos.fromJson(json['videos'] as Map<String, dynamic>),
     thumbnails: (json['thumbnails'] as List<dynamic>?)
         ?.map((e) => Thumbnail.fromJson(e as Map<String, dynamic>))
         .toList(),
-    related: json['related'] == null
-        ? null
-        : Related.fromJson(json['related'] as Map<String, dynamic>),
   );
 
   Map<String, dynamic> toJson() => {
@@ -65,11 +53,9 @@ class Modle extends Equatable {
     'channel': channel?.toJson(),
     'isLiveNow': isLiveNow,
     'lengthText': lengthText,
-    'viewCount': viewCount,
+    'viewCountText': viewCountText,
     'publishedTimeText': publishedTimeText,
-    'videos': videos?.tojson(),
     'thumbnails': thumbnails?.map((e) => e.toJson()).toList(),
-    'related': related?.toJson(),
   };
 
   @override
@@ -82,7 +68,7 @@ class Modle extends Equatable {
       channel,
       isLiveNow,
       lengthText,
-      viewCount,
+      viewCountText,
       publishedTimeText,
       thumbnails,
     ];

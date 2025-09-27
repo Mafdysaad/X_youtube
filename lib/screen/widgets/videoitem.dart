@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:x_youtube/function/featchdata.dart';
-import 'package:x_youtube/remote_data/modle/modle.dart';
+
+import 'package:x_youtube/remote_data/videosmodle/videosmodle.dart';
+import 'package:x_youtube/screen/widgets/customavatar.dart';
 import 'package:x_youtube/screen/widgets/customtext.dart';
 
 class Videoitem extends StatelessWidget {
   const Videoitem({super.key, required this.modl});
-  final Modle modl;
+  final Videosmodle modl;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,6 @@ class Videoitem extends StatelessWidget {
               right: 20,
               child: Container(
                 color: Colors.black54,
-
                 child: Text(
                   modl.lengthText!,
                   style: TextStyle(
@@ -48,10 +49,7 @@ class Videoitem extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(modl.channel!.avatar![0].url!),
-              ),
+              CustomAvatar(url: modl.channel!.avatar![0].url!),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
